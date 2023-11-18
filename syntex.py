@@ -1,19 +1,44 @@
 import book
 
-keys = [
-    "continue",
-    "import",
-    "from",
-    "print",
-    "while",
-    "break",
-    "exit",
-    "elif ",
-    "else ",
-    "for ",
-    "in ",
-    "if ",
-]
+syntax = {
+    "python" : {
+        "key" : 
+            [
+            "continue",
+            "import",
+            "from",
+            "print",
+            "while",
+            "break",
+            "exit",
+            "elif ",
+            "else ",
+            "for ",
+            "in ",
+            "if ",
+            ],
+        "char" : 
+            [
+                "{",
+                "}",
+                "[",
+                "]",
+                "=",
+                ":",
+                ".",
+                ",",
+                "+",
+                "*",
+                "/",
+                "^",
+                "%",
+                ")",
+                "("
+                
+            ]
+    }
+}
+
 
 
 
@@ -25,8 +50,13 @@ def py(text):
     one_cot = False
     new_text = ""
 
-    for k in keys:
+    for c in syntax["python"]["char"] :
+        text = text.replace(c,f"{book.color['lblue']}{c}{book.color['reset']}")
+
+    for k in syntax["python"]["key"] :
         text = text.replace(k,f"{book.color['green']}{k}{book.color['reset']}")
+        
+    
 
     for char in text:
         if char == '"':
@@ -46,7 +76,7 @@ def py(text):
         else:
             new_text = new_text + char
 
-    text = new_text.split("\n")
+    text = new_text.split("\n")[:-1]
 
 
 
